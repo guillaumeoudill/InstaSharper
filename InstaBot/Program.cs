@@ -20,7 +20,7 @@ namespace InstaBot
         ///     Config values
         /// </summary>
         private static readonly int _maxDescriptionLength = 20;
-        private const string DefaultTags = "#Friders #mtb #mtblife #mtbiker #fun #bike";
+        private const string DefaultTags = "#friders #fridersmtb #mtb #mtblife #mtbride #mtbiker #mtbiking #mtbike #mtbporn #mtbbike #mtblovers #mtbaddict #mtbworld #vtt #freeridemtb #fun #bike #mtbdh #dhmtb #cool #coolmtb #mountainbike #mtbpassion #adrenaline";
 
         /// <summary>
         ///     Api instance (one instance per Instagram user)
@@ -132,7 +132,9 @@ namespace InstaBot
                     URI = new Uri(Path.GetFullPath(filePath), UriKind.Absolute).LocalPath
                 };
 
-                string caption = $"#{tag} daily - post by @{topPostofTheDay.User.UserName} \r\n {DefaultTags}";
+                string caption = $"#{tag} daily - post by @{topPostofTheDay.User.UserName} " +
+                    $"______________________________" +
+                    $"\r\n {DefaultTags}";
 
                 var resultpost = await _instaApi.UploadPhotoAsync(mediaImage, caption);
 
