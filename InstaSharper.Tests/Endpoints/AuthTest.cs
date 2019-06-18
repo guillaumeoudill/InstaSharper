@@ -58,7 +58,7 @@ namespace InstaSharper.Tests.Endpoints
         public async void UserLoginSuccessTest()
         {
             var username = "fridersdev";
-            var password = "Friders@insta";// Environment.GetEnvironmentVariable("instaapiuserpassword");
+            var password = Environment.GetEnvironmentVariable("instaapiuserpassword");
 
             var apiInstance = TestHelpers.GetDefaultInstaApiInstance(new UserSessionData
             {

@@ -34,8 +34,8 @@ namespace InstaSharper.Examples
                 var userSession = new UserSessionData
                 {
                     UserName = "fridersdev",
-                    Password = "Friders@insta"
-                };
+                    Password = Environment.GetEnvironmentVariable("instaapiuserpassword")
+            };
 
                 var delay = RequestDelay.FromSeconds(2, 2);
                 // create new InstaApi instance using Builder

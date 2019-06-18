@@ -45,8 +45,8 @@ namespace InstaBot
                 var userSession = new UserSessionData
                 {
                     UserName = "fridersdev",
-                    Password = "Friders@insta"
-                };
+                    Password = Environment.GetEnvironmentVariable("instaapiuserpassword")
+            };
 
                 var delay = RequestDelay.FromSeconds(2, 2);
                 // create new InstaApi instance using Builder
@@ -100,7 +100,7 @@ namespace InstaBot
 
                 //Get top post of the day
 
-                var tag = "mtb";
+                var tag = "mtblife";
                 var result = await _instaApi.GetTagFeedAsync(tag, PaginationParameters.MaxPagesToLoad(5));
                 var tagFeed = result.Value;
                 var anyMediaDuplicate = tagFeed.Medias.GroupBy(x => x.Code).Any(g => g.Count() > 1);
@@ -133,7 +133,7 @@ namespace InstaBot
                 };
 
                 string caption = $"#{tag} daily - post by @{topPostofTheDay.User.UserName} " +
-                    $"______________________________" +
+                    $"\r\n______________________________" +
                     $"\r\n {DefaultTags}";
 
                 var resultpost = await _instaApi.UploadPhotoAsync(mediaImage, caption);
