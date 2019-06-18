@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Samples\DefaultStats.cs" />
     <Compile Include="Samples\Basics.cs" />
     <Compile Include="Samples\CollectionSample.cs" />
     <Compile Include="Samples\CommentMedia.cs" />

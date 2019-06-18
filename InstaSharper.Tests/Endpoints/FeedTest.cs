@@ -49,8 +49,7 @@ namespace InstaSharper.Tests.Endpoints
         }
 
         [Theory]
-        [InlineData(267685466)]
-        [InlineData(466579064)]
+        [InlineData(14525907553)]
         public async void GetUserReelFeedTest(long userPk)
         {
             Assert.True(_authInfo.ApiInstance.IsUserAuthenticated);
@@ -130,6 +129,28 @@ namespace InstaSharper.Tests.Endpoints
             var getFeedResult = await _authInfo.ApiInstance.GetLikeFeedAsync(PaginationParameters.MaxPagesToLoad(5));
             var feed = getFeedResult.Value;
             var anyDuplicate = feed.GroupBy(x => x.Code).Any(g => g.Count() > 1);
+
+            //assert
+            Assert.True(getFeedResult.Succeeded);
+            Assert.NotNull(feed);
+            Assert.False(anyDuplicate);
+        }
+
+
+        [Fact]
+        public async void GetUserLikeFeed2Test()
+        {
+            Assert.True(_authInfo.ApiInstance.IsUserAuthenticated);
+
+            var getFeedResult = await _authInfo.ApiInstance.GetLikeFeedAsync(PaginationParameters.MaxPagesToLoad(1000));
+            var feed = getFeedResult.Value;
+            var anyDuplicate = feed.GroupBy(x => x.Code).Any(g => g.Count() > 1);
+
+            var allImagesUri = feed.Select(f => f.Images).ToArray();
+
+
+            
+
 
             //assert
             Assert.True(getFeedResult.Succeeded);

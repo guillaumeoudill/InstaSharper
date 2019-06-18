@@ -1,7 +1,7 @@
 ﻿using System;
 using InstaSharper.Classes.Models;
 
-namespace InstaSharper.Examples.Utils
+namespace InstaBot.Utils
 {
     public static class ConsoleUtils
     {
